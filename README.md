@@ -169,6 +169,9 @@ There are 3 clasess for all training features {temporal, content, user}
 # Feature Engineering
 
 ## Observation Duration
+在处理数据之前，我们必须知道用于训练的动态数据的窗口长度（用于收集数据的观察天数）。
+因为在此项目中，我们的时间粒度为hour，最终的动态序列长度则为 Window Size = 24 * observation day
+因此，在这个环节中我们会分别讨论每一种模型的选择标准。
 
 ### Churning Window Size
 | Type | RateLeft1DReturn | RateLeft2DRetur | RateLeft3DReturn | RateLeft7DReturn | RateLeft14DReturn |RateLeft21DReturn|
