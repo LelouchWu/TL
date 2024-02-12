@@ -177,7 +177,7 @@ There are 3 clasess for all training features {temporal, content, user}
 | established| 0.91 | 0.85 | 0.8 | 0.65 | 0.43 |0.24|
 
 ### Purchasing Window Size
-|RateUserFtdInF7D | RateUserFtdInF14D | RateUserFtdInF30D | RateAdjacentPurchaseWithin7D | RateAdjacentPurchaseWithin14D|
+|UserFtdInF7D | UserFtdInF14D | UserFtdInF30D | djacentPurchaseWithin7D | AdjacentPurchaseWithin14D|
 |-----------------|----------|---------|------------------|------------|
 |0.64 | 0.72 | 0.8 | 0.9 | 0.94 |
 
