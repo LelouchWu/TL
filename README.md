@@ -169,10 +169,16 @@ There are 3 clasess for all training features {temporal, content, user}
 # Feature Engineering
 
 ## Observation Duration
+
+### Churning Window Size
 | Type | RateLeft1DReturn | RateLeft2DRetur | RateLeft3DReturn | RateLeft7DReturn | RateLeft14DReturn |RateLeft21DReturn|
 |-----------------|----------|---------|------------------|-------------|-------------|-------------|
 | first month| 0.76 | 0.65 | 0.57 | 0.37 | 0.18 |0.08|
 | established| 0.91 | 0.85 | 0.8 | 0.65 | 0.43 |0.24|
+
+### Purchasing Window Size
+|RateUserFtdInF7D | RateUserFtdInF14D | RateUserFtdInF30D | RateAdjacentPurchaseWithin7D | RateAdjacentPurchaseWithin14D|
+|0.64 | 0.72 | 0.8 | 0.9 | 0.94 |
 
 ## Machine Bias Score
 The following function is using in LRS 1.0, where TS is the total spin times, NMP is unique machine, and MS is the each machine's spin times
