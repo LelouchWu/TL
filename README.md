@@ -178,6 +178,7 @@ There are 3 clasess for all training features {temporal, content, user}
 
 ### Purchasing Window Size
 |RateUserFtdInF7D | RateUserFtdInF14D | RateUserFtdInF30D | RateAdjacentPurchaseWithin7D | RateAdjacentPurchaseWithin14D|
+|-----------------|----------|---------|------------------|------------|
 |0.64 | 0.72 | 0.8 | 0.9 | 0.94 |
 
 ## Machine Bias Score
