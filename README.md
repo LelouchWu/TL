@@ -174,13 +174,27 @@ There are 3 clasess for all training features {temporal, content, user}
 因此，在这个环节中我们会分别讨论每一种模型的选择标准。
 
 ### Churning Window Size
+对于predicting churn来说，选择长度的标准有2个：
+- 长度必须足够长，来保证模型的预测准确率
+- 长度不能够太长，避免大部分用户早已经流逝
+这里第一点需要进行敏感性分析实验验证，而第二点则需要分析数据分布。
+从下面的表格可以得出，新用户和老用户有完全不一样的churning pattern。
+前者更容易流失，因此我们不能使用太长的window，基于数据，为了保证能够预测留下的56%用户，window长度不能大于3天。
+而后者不太容易流失，我们可以选择7天来保证能预测可能留下来的65%的用户。
+总结，我们需要1个winddow为3天和1个7天的模型来分别预测新/老用户。
+
 | Type | RateLeft1DReturn | RateLeft2DRetur | RateLeft3DReturn | RateLeft7DReturn | RateLeft14DReturn |RateLeft21DReturn|
 |-----------------|----------|---------|------------------|-------------|-------------|-------------|
 | first month| 0.76 | 0.65 | 0.57 | 0.37 | 0.18 |0.08|
 | established| 0.91 | 0.85 | 0.8 | 0.65 | 0.43 |0.24|
 
 ### Purchasing Window Size
-|UserFtdInF7D | UserFtdInF14D | UserFtdInF30D | djacentPurchaseWithin7D | AdjacentPurchaseWithin14D|
+对于predicting purchasing behavior，我们需要一个相对较长的window来提高模型的准确度。
+而证据则是下表中我们可以得出，对于所有用户啊来说，first Time deposit (FTD) 在前7天的用户，只占了所有付费用户的64%。
+因此，我们不能选择小于7天的window。
+此外，我们还调查了所有用户相邻的purchase的间隔时间，可以得出90%的purchase是在上一个purchase的未来7天内完成的。
+总结，选择7天对于FTD的覆盖率是可以接受的0.64，而对于其他情况能cover 0.9, 所以我们先选择window size为7来预测purchase
+|UserFtdInF7D | UserFtdInF14D | UserFtdInF30D | AdjacentPurchaseWithin7D | AdjacentPurchaseWithin14D|
 |-----------------|----------|---------|------------------|------------|
 |0.64 | 0.72 | 0.8 | 0.9 | 0.94 |
 
