@@ -168,20 +168,10 @@ There are 3 clasess for all training features {temporal, content, user}
 
 # Feature Engineering
 
-In this project, the foundational infrastructure of the system is built upon the multi-head attention layers of the transformer's encoder. 
-
-Furthermore, to ensure the model accurately interprets the sequence of behaviors, the positional encoding technique referenced in the paper is also employed.
-
-Besides, according to assessment the machine bias, we need to design a formula to convert spin times into score integer 
-
-Consequently, during the feature engineering phase, our primary objectives are threefold: 
-
-- design comperhensive and scalable machine bias score funciton
-
-- encode all the features into integer, and saving the encode mapping for prediction
-  
-- transform such encoded features into an ordered sequence arrau that reflects the user's gaming path
-
+## Observation Duration
+| Type | RateLeft1DReturn | RateLeft2DRetur | RateLeft3DReturn | RateLeft7DReturn | RateLeft14DReturn |RateLeft21DReturn|
+|-----------------|----------|---------|------------------|-------------|-------------|-------------|
+| first month users| 0.76 | 0.65 | 0.57 | 0.37 | 0.18 |0.08|
 
 ## Machine Bias Score
 The following function is using in LRS 1.0, where TS is the total spin times, NMP is unique machine, and MS is the each machine's spin times
